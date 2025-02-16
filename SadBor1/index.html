@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jasa Sumur Bor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background: #3366ff;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background: #33cc33;
+            padding: 10px 0;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            transition: background 0.3s ease-in-out;
+        }
+        nav a:hover {
+            background: #2aa32a;
+        }
+        .container {
+            padding: 20px;
+            text-align: center;
+        }
+        .whatsapp-button {
+            display: inline-block;
+            background: #25D366;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .slider {
+            display: flex;
+            overflow: hidden;
+            width: 80%;
+            margin: auto;
+            position: relative;
+        }
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .slide {
+            min-width: 100%;
+            flex-shrink: 0;
+            transition: 0.5s;
+        }
+        .catalog {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .catalog-item {
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+        .catalog-item img {
+            width: 100%;
+            border-radius: 5px;
+        }
+        .whatsapp-floating {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: #25D366;
+            color: white;
+            padding: 15px;
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+        }
+        .footer {
+            background: #3366ff;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Jasa Sumur Bor</h1>
+    </header>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Galeri</a>
+        <a href="#">Medsos</a>
+        <a href="#">Artikel</a>
+    </nav>
+    <div class="container">
+        <h2>Selamat Datang di Jasa Sumur Bor</h2>
+        <p>Kami menyediakan layanan pengeboran sumur dengan profesionalisme dan harga terbaik.</p>
+        <a class="whatsapp-button" href="https://wa.me/+6289608838058" target="_blank">Hubungi Kami di WhatsApp</a>
+        <div class="catalog">
+            <div class="catalog-item"><img src="gambar/produk1.jpg" alt="Bor Manual 20 Meter"><p>Bor Manual 20 Meter</p></div>
+            <div class="catalog-item"><img src="gambar/produk2.jpg" alt="Ground Listrik"><p>Ground Listrik</p></div>
+            <div class="catalog-item"><img src="gambar/produk3.jpg" alt="Bor Dalam 80 Meter"><p>Bor Dalam 80 Meter</p></div>
+            <div class="catalog-item"><img src="gambar/produk4.jpg" alt="Instalasi Pipa"><p>Instalasi Pipa</p></div>
+            <div class="catalog-item"><img src="gambar/produk5.jpg" alt="Service Sumur Bor"><p>Service Sumur Bor</p></div>
+            <div class="catalog-item"><img src="gambar/produk6.jpg" alt="Deteksi Sumber Air"><p>Deteksi Sumber Air</p></div>
+        </div>
+        <div class="slider" id="slider-container"></div>
+    </div>
+    <a class="whatsapp-floating" href="https://wa.me/+6289608838058" target="_blank">☎</a>
+    <div class="footer">
+        <p>Follow kami di sosial media: Facebook | Instagram | Twitter</p>
+    </div>
+    <script>
+        async function loadImages() {
+            const container = document.getElementById("slider-container");
+            for (let i = 1; i <= 10; i++) {
+                let img = new Image();
+                img.src = `gambar/gambar${i}.jpg`;
+                img.className = "slide";
+                img.onerror = () => {};
+                container.appendChild(img);
+            }
+            slideShow();
+        }
+        function slideShow() {
+            let index = 0;
+            const slides = document.querySelectorAll('.slide');
+            function showSlide() {
+                slides.forEach(slide => slide.style.display = 'none');
+                slides[index].style.display = 'block';
+                index = (index + 1) % slides.length;
+            }
+            setInterval(showSlide, 3000);
+            showSlide();
+        }
+        loadImages();
+    </script>
+</body>
+</html>
